@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Build optimization
+  productionBrowserSourceMaps: false, // Disable source maps in production for faster builds
+  swcMinify: true, // Use faster SWC minifier
+  compress: true, // Enable gzip compression
+  optimizeFonts: true, // Optimize font loading
+  poweredByHeader: false, // Remove X-Powered-By header
   async headers() {
     return [
       {

@@ -1,30 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function DisclaimerModal() {
-  const [isOpen, setIsOpen] = useState(() => {
-    // Check if user has already accepted the disclaimer
-    if (typeof window === 'undefined') return null;
+  const [mounted, setMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    // Only run on client after hydration
     const hasAccepted = localStorage.getItem('disclaimerAccepted');
-    return !hasAccepted;
-  });
+    setIsOpen(!hasAccepted);
+    setMounted(true);
+  }, []);
+
+  // Don't render anything until after client-side hydration
+  if (!mounted) {
+    return null;
+  }
 
   const handleProceed = () => {
     localStorage.setItem('disclaimerAccepted', 'true');
     setIsOpen(false);
   };
 
-  if (isOpen === null) {
-    return null;
-  }
-
   if (!isOpen) {
     return null;
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" suppressHydrationWarning>
       <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-8">

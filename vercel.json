@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd arise-agency && npm run build",
+  "outputDirectory": "arise-agency/.next",
+  "rootDirectory": "arise-agency"
+}

@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+/.pnp
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+
+# Production build
+/build
+/dist
+
+# Misc
+.DS_Store
+*.pem
+.vercel
+.env.production.local
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files (uncomment if you need to keep demo .env.local)
+# .env*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+
+# Firebase
+.firebase/
+.firebaserc
+
+# Admin files (if setting up with real credentials)
+# admin-credentials.json

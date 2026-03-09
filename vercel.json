@@ -1,6 +1,3 @@
 {
-  "buildCommand": "cd arise-agency && npm run build",
-  "installCommand": "cd arise-agency && npm install",
-  "devCommand": "cd arise-agency && npm run dev",
   "root": "arise-agency"
 }

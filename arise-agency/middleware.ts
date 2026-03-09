@@ -84,19 +84,8 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // Security headers (additional layer beyond next.config.ts)
-  const response = NextResponse.next();
-
-  // Add additional security headers
-  response.headers.set('X-DNS-Prefetch-Control', 'off');
-  response.headers.set('X-Download-Options', 'noopen');
-
-  // Only allow HTTPS in production
-  if (process.env.NODE_ENV === 'production' && !request.url.startsWith('https://')) {
-    return NextResponse.redirect(request.url.replace('http://', 'https://'), 301);
-  }
-
-  return response;
+  // Pass through to next middleware/handler
+  return NextResponse.next();
 }
 
 export const config = {
